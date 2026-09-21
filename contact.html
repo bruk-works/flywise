@@ -25,6 +25,41 @@
     <link rel="stylesheet" href="css/contact.css">
 </head>
 
+<!-- SUCCESS POPUP -->
+<div class="form-popup" id="formPopup" aria-hidden="true">
+  <div class="form-popup-overlay"></div>
+
+  <div class="form-popup-box" role="dialog" aria-modal="true">
+    <button
+      type="button"
+      class="form-popup-close"
+      id="formPopupClose"
+      aria-label="Close"
+    >
+      &times;
+    </button>
+
+    <div class="form-popup-icon">✓</div>
+
+    <p class="eyebrow">ENQUIRY RECEIVED</p>
+
+    <h3>Thank you for contacting Flywise.</h3>
+
+    <p>
+      Your enquiry has been received successfully.
+      A Flywise advisor will get back to you shortly.
+    </p>
+
+    <button
+      type="button"
+      class="btn btn-navy"
+      id="formPopupDone"
+    >
+      Done
+    </button>
+  </div>
+</div>
+
 <body>
 
     <!-- ================= HEADER ================= -->
@@ -253,7 +288,7 @@
                     <!-- WHATSAPP -->
 
                     <a
-                        href="https://wa.me/8301932703?text=Hello%20Flywise,%20I%20would%20like%20to%20make%20an%20enquiry."
+                        href="https://wa.me/+91 8301932703?text=Hello%20Flywise,%20I%20would%20like%20to%20make%20an%20enquiry."
                         class="contact-whatsapp"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -301,8 +336,9 @@
 
                     <!-- TODO: CLIENT VALUE REQUIRED: production form submission endpoint. -->
                     <form
+                        id="contact-form"
                         class="contact-form"
-                        action="#"
+                        action="https://formspree.io/f/mljdjkyg"
                         method="post"
                     >
 
@@ -398,29 +434,9 @@
                                         Career Opportunities
                                     </option>
 
-                                    <option value="other">
-                                        Other
-                                    </option>
-
                                 </select>
 
                             </div>
-
-                        </div>
-
-
-                        <div class="form-field">
-
-                            <label for="education">
-                                Education / Qualification
-                            </label>
-
-                            <input
-                                type="text"
-                                id="education"
-                                name="education"
-                                placeholder="e.g. BCA, B.Tech, Plus Two"
-                            >
 
                         </div>
 
@@ -564,7 +580,7 @@
 
 
                     <a
-                        href="https://wa.me/8301932703"
+                        href="https://wa.me/+91 8301932703"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="quick-card"
@@ -632,7 +648,7 @@
                 </div>
 
                 <a
-                    href="https://wa.me/8301932703?text=Hello%20Flywise,%20I%20would%20like%20to%20know%20more."
+                    href="https://wa.me/+91 8301932703?text=Hello%20Flywise,%20I%20would%20like%20to%20know%20more."
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn btn-gold large"
@@ -670,7 +686,7 @@
 
                 <!-- Facebook -->
                 <a
-                    href="#"
+                    href="https://www.facebook.com/share/1UyzL5e3G7/"
                     target="_blank"
                     rel="noopener"
                     aria-label="Facebook"
@@ -682,7 +698,7 @@
 
                 <!-- WhatsApp -->
                 <a
-                    href="https://wa.me/8301932703"
+                    href="https://wa.me/+91 8301932703"
                     target="_blank"
                     rel="noopener"
                     aria-label="WhatsApp"
@@ -694,7 +710,7 @@
 
                 <!-- Instagram -->
 <a 
-    href="#" 
+    href="https://www.instagram.com/flywise.internationalpvtltd?stkn=eWNvZDZ1OWF2em5j" 
     target="_blank" 
     rel="noopener" 
     aria-label="Instagram"
@@ -787,7 +803,7 @@
     <div class="floating-contact">
 
         <a
-            href="https://wa.me/8301932703"
+            href="https://wa.me/+91 8301932703"
             class="floating-icon whatsapp"
             target="_blank"
             rel="noopener noreferrer"

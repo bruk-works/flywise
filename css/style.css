@@ -1173,6 +1173,100 @@ h2 em {
     grid-column: span 1;
 }
 
+/* ==========================================
+   GERMANY OPPORTUNITIES MOBILE SLIDER
+   ========================================== */
+
+.opportunity-dots {
+    display: none;
+}
+
+@media (max-width: 850px) {
+
+    /* VIEWPORT */
+    .opportunities-slider {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* MOVING TRACK */
+    .opportunities {
+        display: flex !important;
+        grid-template-columns: none !important;
+
+        width: 100% !important;
+
+        gap: 0 !important;
+
+        margin: 0 !important;
+
+        transition: transform 0.55s cubic-bezier(.22, 1, .36, 1);
+
+        transform: translateX(0);
+    }
+
+    /* CARD */
+    .opportunity {
+        flex: 0 0 100% !important;
+
+        width: 100% !important;
+        min-width: 100% !important;
+
+        min-height: 230px !important;
+        height: 250px !important;
+
+        box-sizing: border-box;
+
+        margin: 0 !important;
+
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .opportunity:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* DOTS */
+    .opportunity-dots {
+        display: flex !important;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 8px;
+
+        margin-top: 24px;
+    }
+
+    .opportunity-dot {
+        width: 8px;
+        height: 8px;
+
+        padding: 0;
+
+        border: 0;
+
+        border-radius: 50%;
+
+        background: rgba(12, 35, 70, 0.25);
+
+        cursor: pointer;
+
+        transition:
+            width 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .opportunity-dot.active {
+        width: 24px;
+
+        background: var(--gold);
+
+        border-radius: 999px;
+    }
+}
 
 /* =========================================================
    PROCESS
@@ -1319,71 +1413,567 @@ h2 em {
 
 
 /* =========================================================
-   STUDENT STORIES
+   PREMIUM TESTIMONIAL CAROUSEL
+   Desktop: multiple cards visible
+   Mobile: one card visible + swipe
 ========================================================= */
 
 .stories {
-    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(247,243,235,.88),
+            rgba(247,243,235,.88)
+        ),
+        url("../images/germany-bg.jpg") center / cover no-repeat;
 }
 
-.story-grid {
-    display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+/* =========================================================
+   CAROUSEL
+========================================================= */
 
-    gap: 18px;
-}
-
-.story {
+.testimonial-carousel {
     position: relative;
 
-    padding: 34px;
+    width: 100%;
+    max-width: 1180px;
 
-    background: #fff;
+    margin: 0 auto;
 
-    border: 1px solid var(--line);
+    padding: 15px 60px 25px;
+
+    overflow: hidden;
 }
 
-.quote {
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.testimonial-track {
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 24px;
+
+    width: max-content;
+
+    transform: translateX(0);
+
+    transition:
+        transform .7s cubic-bezier(.22,1,.36,1);
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.testimonial-card {
+    position: relative;
+
+    flex: 0 0 350px;
+
+    width: 350px;
+    height: 540px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(247,243,235,.97)
+        );
+
+    border: 1px solid rgba(201,150,62,.32);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 55px rgba(12,35,70,.14);
+
+    transition:
+        box-shadow .35s ease,
+        transform .35s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 28px 65px rgba(12,35,70,.18);
+}
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.testimonial-top {
+    position: absolute;
+
+    top: 17px;
+    left: 18px;
+    right: 18px;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.testimonial-logo {
+    width: 92px;
+    height: 38px;
+
+    object-fit: contain;
+
+    mix-blend-mode: multiply;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.testimonial-photo-wrap {
+    position: relative;
+
+    height: 265px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eee7dc,
+            #ddd3c3
+        );
+}
+
+.testimonial-photo-wrap::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.2),
+            transparent 55%
+        );
+}
+
+.testimonial-photo-wrap::after {
+    content: "GERMANY";
+
+    position: absolute;
+
+    right: -13px;
+    bottom: 24px;
+
+    z-index: 3;
+
+    padding: 6px 17px;
+
+    color: rgba(12,35,70,.45);
+
+    font-size: 7px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    border: 1px solid rgba(12,35,70,.16);
+
+    transform: rotate(-90deg);
+}
+
+.testimonial-photo {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.testimonial-content {
+    position: relative;
+
+    height: 275px;
+
+    padding: 18px 22px 20px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,253,249,.98),
+            rgba(247,243,235,.96)
+        );
+}
+
+.testimonial-stars {
+    margin-bottom: 7px;
+
     color: var(--gold);
 
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+.testimonial-quote-mark {
+    position: absolute;
+
+    top: 22px;
+    right: 20px;
+
+    color: rgba(201,150,62,.18);
+
     font:
-        700 60px/1
+        700 58px/1
         "Playfair Display",
         Georgia,
         serif;
 }
 
-.story blockquote {
-    min-height: 80px;
+.testimonial-content blockquote {
+    position: relative;
 
-    margin: 12px 0 30px;
+    z-index: 2;
 
-    color: #465167;
+    height: 105px;
+
+    margin: 0;
+
+    color: #354158;
 
     font:
-        400 17px/1.7
+        400 14px/1.55
         "Playfair Display",
         Georgia,
         serif;
 }
 
-.story strong {
+
+/* =========================================================
+   STUDENT
+========================================================= */
+
+.testimonial-student {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    padding-top: 12px;
+
+    border-top: 1px solid rgba(12,35,70,.12);
+}
+
+.testimonial-student strong {
     display: block;
 
     color: var(--navy);
 
     font-size: 14px;
+    font-weight: 700;
 }
 
-.story small {
-    display: block;
 
-    margin-top: 4px;
+/* =========================================================
+   ARROWS
+========================================================= */
 
-    color: var(--muted);
+.testimonial-arrow {
+    position: absolute;
 
-    font-size: 11px;
+    top: 50%;
+
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(12,35,70,.12);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.92);
+
+    color: var(--navy);
+
+    font-size: 30px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 28px rgba(12,35,70,.14);
+
+    transform: translateY(-50%);
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.testimonial-prev {
+    left: 0;
+}
+
+.testimonial-next {
+    right: 0;
+}
+
+.testimonial-arrow:hover {
+    background: var(--navy);
+
+    color: #fff;
+
+    transform:
+        translateY(-50%)
+        scale(1.06);
+
+    box-shadow:
+        0 14px 34px rgba(12,35,70,.20);
+}
+
+.testimonial-arrow[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.testimonial-dots {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 22px;
+}
+
+.testimonial-dots button {
+    width: 7px;
+    height: 7px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba(12,35,70,.25);
+
+    cursor: pointer;
+
+    transition:
+        width .25s ease,
+        background .25s ease;
+}
+
+.testimonial-dots button.active {
+    width: 24px;
+
+    border-radius: 999px;
+
+    background: var(--gold);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1150px) {
+
+    .testimonial-carousel {
+        max-width: 850px;
+
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+
+    .testimonial-card {
+        flex-basis: 330px;
+        width: 330px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ONE CARD AT A TIME
+   NO ARROWS
+========================================================= */
+
+/* =========================================================
+   MOBILE — PORTRAIT TESTIMONIAL CARD
+========================================================= */
+
+@media(max-width:850px) {
+
+    .testimonial-carousel {
+        width: 100%;
+        max-width: 430px;
+
+        margin: 0 auto;
+
+        padding: 15px 0 20px;
+
+        overflow: hidden;
+    }
+
+
+    .testimonial-track {
+        gap: 0;
+        width: 100%;
+    }
+
+
+    .testimonial-card {
+        flex: 0 0 100%;
+        width: 100%;
+
+        /* Portrait proportion */
+        height: 125vw;
+        max-height: 620px;
+        min-height: 500px;
+
+        border-radius: 18px;
+
+        transform: none !important;
+    }
+
+
+    .testimonial-card:hover {
+        transform: none;
+    }
+
+
+    /* Hide arrows on mobile */
+
+    .testimonial-arrow {
+        display: none !important;
+    }
+
+
+    /* Keep dots */
+
+    .testimonial-dots {
+        margin-top: 18px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:560px) {
+
+    .testimonial-carousel {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 12px 0 15px;
+    }
+
+
+    .testimonial-card {
+        width: 100%;
+
+        /*
+           Full-width portrait card.
+           Example:
+           360px screen → ~450px tall
+        */
+
+        height: 125vw;
+
+        min-height: 450px;
+        max-height: 560px;
+
+        border-radius: 15px;
+    }
+
+
+    .testimonial-photo-wrap {
+        height: 58%;
+    }
+
+
+    .testimonial-content {
+        height: 42%;
+
+        padding: 17px 20px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media(max-width:380px) {
+
+    .testimonial-card {
+        width: 100%;
+
+        height: 125vw;
+
+        min-height: 420px;
+        max-height: 500px;
+
+        border-radius: 14px;
+    }
+
+
+    .testimonial-photo-wrap {
+        height: 57%;
+    }
+
+
+    .testimonial-content {
+        height: 43%;
+    }
+
 }
 
 
@@ -1832,16 +2422,16 @@ h2 em {
     }
 
     .brand {
-        margin-left: 0;
+        margin-left: 20px !important;
         margin-right: auto;
-
+        
         width: 150px;
         height: 58px;
         flex: 0 0 150px;
     }
 
     .brand img {
-        width: 100%;
+        width: calc(100% - 8px);
         height: 100%;
         object-fit: contain;
         object-position: left center;
@@ -4413,31 +5003,393 @@ h2 em {
 }
 
 
-/* ---------- TEAM CARDS ---------- */
+/* =========================================================
+   TEAM CARDS — COMPACT MOBILE / RESPONSIVE
+   ========================================================= */
 
-.team-card {
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
+.team{
+    width:100%;
+    background:var(--paper);
+    padding:90px 0;
+    overflow:hidden;
 }
 
-.team-card {
-    transform-style: preserve-3d;
+.team > .container{
+    width:min(1500px, calc(100% - 80px));
+    margin:0 auto;
 }
 
-.team-card:hover {
-    box-shadow: 0 22px 50px rgba(12, 35, 70, 0.12);
+
+/* =========================
+   GRID
+   ========================= */
+
+.team-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:28px !important;
+    width:100%;
+    align-items:start !important;
 }
 
-.team-card:hover .team-photo {
-    transform: scale(1.035);
+
+/* =========================
+   CARD
+   ========================= */
+
+.team-card{
+    position:relative !important;
+
+    width:100% !important;
+    min-width:0 !important;
+    min-height:0 !important;
+
+    height:360px !important;
+    aspect-ratio:auto !important;
+
+    overflow:hidden !important;
+
+    border-radius:18px !important;
+
+    background:var(--navy);
+
+    border:1px solid rgba(12,35,70,.08);
+
+    box-shadow:0 18px 45px rgba(12,35,70,.12);
+
+    isolation:isolate;
+
+    grid-column:auto !important;
+    grid-row:auto !important;
+
+    transform:none;
 }
 
-.team-photo {
-    overflow: hidden;
-    transition: transform 0.5s ease;
+
+/* =========================
+   IMAGE
+   ========================= */
+
+.team-card .team-photo,
+.team-card > img{
+    position:absolute !important;
+    inset:0 !important;
+
+    width:100% !important;
+    height:100% !important;
+
+    overflow:hidden;
 }
 
+.team-card .team-photo img,
+.team-card > img{
+    width:100% !important;
+    height:100% !important;
+
+    object-fit:cover !important;
+    object-position:center !important;
+
+    display:block;
+}
+
+
+/* =========================
+   DARK IMAGE GRADIENT
+   ========================= */
+
+.team-card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(7,22,45,.96) 0%,
+            rgba(7,22,45,.70) 30%,
+            rgba(7,22,45,.12) 65%,
+            rgba(7,22,45,0) 100%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   CONTENT
+   ========================= */
+
+.team-card-content,
+.team-card > div:last-child{
+    position:absolute !important;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    z-index:2;
+
+    padding:26px 24px 22px;
+
+    color:#fff;
+}
+
+
+/* =========================
+   NAME
+   ========================= */
+
+.team-card h3{
+    margin:0 0 5px !important;
+
+    color:#fff;
+
+    font-family:Georgia, "Times New Roman", serif;
+
+    font-size:25px !important;
+    line-height:1.1 !important;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   ROLE
+   ========================= */
+
+.team-card p{
+    margin:0 !important;
+
+    color:#fff;
+
+    font-size:12px !important;
+    line-height:1.4 !important;
+
+    font-weight:600;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:1100px){
+
+    .team{
+        padding:80px 0;
+    }
+
+    .team > .container{
+        width:calc(100% - 50px);
+        max-width:900px;
+    }
+
+    .team-grid{
+        grid-template-columns:repeat(2, minmax(0,1fr)) !important;
+        gap:22px !important;
+    }
+
+    .team-card{
+        height:320px !important;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:850px){
+
+    .team{
+        padding:65px 0 75px;
+    }
+
+    .team > .container{
+        width:calc(100% - 32px);
+        max-width:700px;
+        margin:0 auto;
+    }
+
+
+    /* EXACTLY TWO CARDS PER ROW */
+
+    .team-grid{
+        display:grid !important;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap:16px !important;
+
+        align-items:start !important;
+    }
+
+
+    /* COMPACT CARD */
+
+    .team-card,
+    .team-card:nth-child(n){
+        width:100% !important;
+
+        height:clamp(155px, 44vw, 180px) !important;
+
+        min-height:0 !important;
+        max-height:180px !important;
+
+        aspect-ratio:auto !important;
+
+        grid-column:auto !important;
+        grid-row:auto !important;
+
+        border-radius:14px !important;
+
+        overflow:hidden !important;
+    }
+
+
+    /* IMAGE MUST NOT CONTROL CARD HEIGHT */
+
+    .team-card .team-photo,
+    .team-card > img{
+        position:absolute !important;
+        inset:0 !important;
+
+        width:100% !important;
+        height:100% !important;
+
+        min-height:0 !important;
+    }
+
+
+    .team-card .team-photo img,
+    .team-card > img{
+        width:100% !important;
+        height:100% !important;
+
+        object-fit:cover !important;
+    }
+
+
+    /* COMPACT TEXT */
+
+    .team-card-content,
+    .team-card > div:last-child{
+        padding:14px 13px 12px !important;
+    }
+
+    .team-card h3{
+        margin:0 0 3px !important;
+
+        font-size:17px !important;
+        line-height:1.1 !important;
+    }
+
+    .team-card p{
+        margin:0 !important;
+
+        font-size:9px !important;
+        line-height:1.3 !important;
+
+        font-weight:600;
+    }
+
+
+    /* REMOVE HOVER LIFT ON TOUCH */
+
+    .team-card:hover{
+        transform:none !important;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media(max-width:560px){
+
+    .team{
+        padding:55px 0 65px;
+    }
+
+    .team > .container{
+        width:calc(100% - 24px);
+    }
+
+    .team-grid{
+        grid-template-columns:
+            repeat(2, minmax(0,1fr)) !important;
+
+        gap:12px !important;
+    }
+
+    .team-card,
+    .team-card:nth-child(n){
+        height:clamp(150px, 43vw, 170px) !important;
+
+        max-height:170px !important;
+
+        border-radius:12px !important;
+    }
+
+    .team-card-content,
+    .team-card > div:last-child{
+        padding:12px 10px 10px !important;
+    }
+
+    .team-card h3{
+        font-size:15px !important;
+    }
+
+    .team-card p{
+        font-size:8px !important;
+        line-height:1.3 !important;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px){
+
+    .team > .container{
+        width:calc(100% - 20px);
+    }
+
+    .team-grid{
+        gap:10px !important;
+    }
+
+    .team-card,
+    .team-card:nth-child(n){
+        height:150px !important;
+        max-height:150px !important;
+        border-radius:11px !important;
+    }
+
+    .team-card-content,
+    .team-card > div:last-child{
+        padding:10px 9px 9px !important;
+    }
+
+    .team-card h3{
+        font-size:14px !important;
+    }
+
+    .team-card p{
+        font-size:7.5px !important;
+    }
+
+}
 
 /* ---------- STUDENT STORIES ---------- */
 
@@ -7290,4 +8242,190 @@ h2 em {
     .stat{
         width:100%;
     }
+}
+
+/* =========================================================
+   CONTACT FORM SUCCESS POPUP
+   ========================================================= */
+
+.form-popup{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+.form-popup.is-open{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* Background */
+
+.form-popup-overlay{
+    position:absolute;
+    inset:0;
+
+    background:rgba(7,22,45,.65);
+
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+}
+
+
+/* Popup */
+
+.form-popup-box{
+    position:relative;
+    z-index:1;
+
+    width:min(480px,100%);
+
+    padding:42px 36px 36px;
+
+    background:var(--paper);
+
+    border-radius:18px;
+
+    text-align:center;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.28);
+
+    transform:translateY(20px) scale(.97);
+
+    transition:
+        transform .4s cubic-bezier(.22,1,.36,1);
+}
+
+.form-popup.is-open .form-popup-box{
+    transform:translateY(0) scale(1);
+}
+
+
+/* Success icon */
+
+.form-popup-icon{
+    width:64px;
+    height:64px;
+
+    margin:0 auto 22px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:var(--green);
+    color:#fff;
+
+    font-size:30px;
+    font-weight:700;
+}
+
+
+/* Heading */
+
+.form-popup-box .eyebrow{
+    margin-bottom:10px;
+}
+
+.form-popup-box h3{
+    margin:0 0 12px;
+
+    color:var(--navy);
+
+    font-family:"Playfair Display",Georgia,serif;
+
+    font-size:28px;
+    line-height:1.2;
+}
+
+.form-popup-box > p:not(.eyebrow){
+    margin:0 auto 25px;
+
+    max-width:360px;
+
+    color:var(--muted);
+
+    font-size:14px;
+    line-height:1.65;
+}
+
+
+/* Close button */
+
+.form-popup-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+
+    width: 36px;
+    height: 36px;
+
+    border: 0;
+    border-radius: 50%;
+
+    background: transparent;
+    color: var(--navy);
+
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.form-popup-close:hover {
+    background: var(--cream);
+    transform: rotate(90deg);
+}
+
+
+
+/* Done button */
+
+.form-popup-box .btn{
+    min-width:120px;
+}
+
+
+/* Mobile */
+
+@media(max-width:560px){
+
+    .form-popup{
+        padding:16px;
+    }
+
+    .form-popup-box{
+        padding:38px 24px 28px;
+        border-radius:15px;
+    }
+
+    .form-popup-icon{
+        width:56px;
+        height:56px;
+        font-size:26px;
+        margin-bottom:18px;
+    }
+
+    .form-popup-box h3{
+        font-size:24px;
+    }
+
 }
